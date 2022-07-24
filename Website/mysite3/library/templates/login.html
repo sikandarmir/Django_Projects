@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+
+    <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+    <div class="whole-page">
+        <div class="inner-page">
+            <div class="lms-and-logo">
+                <div class="lms">
+                    LMS
+                </div>
+                <div class="logo">
+                    LOGO
+                </div>
+            </div>
+            <div class="below-logo">
+                Library Management System
+            </div>
+            <div class="log-in">
+                Login
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                {% block body %}
+            <div class="d-flex align-content-center justify-content-center">
+                <div class="row">
+                    <div class="col-sm-3">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" class="btn btn-primary px-4" value="Log in">
+                    </form>
+                    </div>
+                {% endblock %}
+                <a href="{% url 'sign_up'%}" > <p class="reg-yself">Create an account</p></a>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

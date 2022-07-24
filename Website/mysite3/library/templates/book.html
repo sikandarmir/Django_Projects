@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+         <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+        <!-- <link rel="stylesheet" href="style/style.css"> -->
+        <link rel="stylesheet" href="bootStrap/css/bootstrap.min.css">
+        <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
+        <!-- fontawesom -->
+        <script src="https://use.fontawesome.com/55501b3e82.js"></script>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"> -->
+ 
+    <title>ML</title>
+</head>
+<body class="bg-light"> 
+    <!-- navbar!! -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img class="brandStyle" src={% static 'css/logo.png' %} alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </li>
+
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index1'%}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Book'%}" >Books</a>
+              </li>
+
+                <a class="nav-link" href="{% url 'USER'%}" tabindex="-1" aria-disabled="true">Users</a>
+              </li>
+            </ul>
+            <form class="d-flex gap-2">
+                <i class="fi fi-sr-user text-info"></i>
+                <p class="p text-info">Sikandar</p>
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+      <main>
+        <section class="my-5">
+            <div class="container bg-white shadow-lg py-5 px-5 rounded">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h3>Books</h3>
+                    </div>
+                    <div class="col-sm-5 d-flex align-items-baseline gap-4">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button class="btn btn-primary" type="submit">Go</button>
+                        </div>
+                        <select class="form-select form-select-sm">
+                                <option>All</option>
+                                <option>Poetry</option>
+                                <option>Novel</option>
+                                <option>Physics</option>
+                                <option>Science</option>
+                        </select>
+                    </div>
+                </div>
+
+        <!-- card and upper tabs row starts from here -->
+        <!-- card and upper tabs row starts from here -->
+        
+        <!-- card and upper tabs row ends here -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">All</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-poetry-tab" data-bs-toggle="pill" data-bs-target="#pills-poetry" type="button" role="tab" aria-controls="pills-poetry" aria-selected="false">Poetry</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-novel-tab" data-bs-toggle="pill" data-bs-target="#pills-novel" type="button" role="tab" aria-controls="pills-novel" aria-selected="false">Novels</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-physics-tab" data-bs-toggle="pill" data-bs-target="#pills-phy" type="button" role="tab" aria-controls="pills-phy" aria-selected="false">Physics</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-science-tab" data-bs-toggle="pill" data-bs-target="#pills-science" type="button" role="tab" aria-controls="pills-science" aria-selected="false">Science</button>
+                            </li>
+                        </ul>
+                          <div class="tab-content py-4" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="row gap-3 d-flex justify-content-center align-content-center">
+                                    <!-- cards starts from here -->
+                                    {% for item in query_results %}
+                                    
+                                
+                                <!-- cards ends here -->
+                                    <!-- cards starts from here -->
+                                    <div class="col-sm-2 shadow rounded bg-white p-2">
+                                        <div class="myImage text-center"><img src={% static 'css/7.jpg' %} alt=""></div>
+                                        <div class="h6 pt-2">{{ item.Book_Name }}</div>
+                                        <small class="p">{{ item.Book_description }}</small>
+                                        <div class="bookPrice text-end p-0">PKR{{ item.price }}</div>
+                                    </div>    
+                                     {% endfor %}                           
+                                                      
+                                <!-- cards ends here -->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-poetry" role="tabpanel" aria-labelledby="pills-poetry-tab">
+                                sikander
+                            </div>
+                            <div class="tab-pane fade" id="pills-novel" role="tabpanel" aria-labelledby="pills-novel-tab">novel</div>
+                            <div class="tab-pane fade" id="pills-phy" role="tabpanel" aria-labelledby="pills-phy-tab">phy</div>
+                            <div class="tab-pane fade" id="pills-science" role="tabpanel" aria-labelledby="pills-science-tab">science</div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+      </main>
+      <!-- navbar ends!! -->
+      <!-- navbar ends!! -->
+</body>
+</html>
